@@ -28,9 +28,6 @@
     "lint": "eslint --fix src",
     "format:check": "prettier --check src",
     "format:write": "prettier --write src",
-    "test": "vitest run",
-    "test:cov": "vitest run --coverage",
-    "test:watch": "vitest",
     "updateChainConfigs": "tsx ./scripts/fetchChainConfigs.ts",
     "runAll": "pnpm compile && pnpm format:write && pnpm lint && pnpm test"
   },
@@ -49,7 +46,6 @@
     "@rollup/plugin-babel": "^7.1.0",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-typescript": "^12.3.1",
-    "@vitest/coverage-v8": "^5.0.5",
     "axios": "^1.21.0",
     "dotenv": "^18.0.9",
     "rollup": "^4.66.0",

@@ -17,10 +17,6 @@
     "lint": "eslint --fix src",
     "format:check": "prettier --check src",
     "format:write": "prettier --write src",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:cov": "vitest run --coverage",
-    "test:e2e": "vitest run --config ./vitest.config.e2e.ts",
     "sentry:sourcemaps": "sentry-cli sourcemaps inject --org paraspell --project node ./dist && sentry-cli sourcemaps upload --org paraspell --project node ./dist"
   },
   "dependencies": {
@@ -67,10 +63,8 @@
     "@types/express": "^5.0.6",
     "@types/nodemailer": "^8.0.2",
     "@types/supertest": "^7.2.1",
-    "@vitest/coverage-v8": "^5.0.5",
     "cross-env": "^10.1.0",
     "prisma": "^7.10.1",
-    "supertest": "^7.3.1",
     "unplugin-swc": "^2.0.0"
   }
 }

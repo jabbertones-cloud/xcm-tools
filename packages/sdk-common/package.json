@@ -27,10 +27,7 @@
     "lint:check": "eslint src",
     "lint": "eslint --fix src",
     "format:check": "prettier --check src",
-    "format:write": "prettier --write src",
-    "test": "vitest run",
-    "test:cov": "vitest run --coverage",
-    "test:watch": "vitest"
+    "format:write": "prettier --write src"
   },
   "dependencies": {},
   "devDependencies": {
@@ -42,7 +39,6 @@
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-typescript": "^12.3.1",
     "@types/cli-progress": "^3.11.6",
-    "@vitest/coverage-v8": "^5.0.5",
     "cli-progress": "^3.12.0",
     "dotenv": "^18.0.9",
     "picocolors": "^1.1.1",
