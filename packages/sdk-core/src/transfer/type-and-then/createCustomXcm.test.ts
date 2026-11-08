@@ -686,6 +686,34 @@ describe('createCustomXcm', () => {
 
       expect(result).toEqual([createExchange(mythLocation, false), createDeposit(2)])
     })
+
+    it('exchanges only the native ED on multi-asset transfer when fee asset is deposited', async () => {
+      vi.spyOn(mockApi, 'findAssetInfoOnDest').mockReturnValue({
+        symbol: 'PINK',
+        decimals: 10,
+        location: pinkLocation,
+        existentialDeposit: '100'
+      })
+
+      const result = await createCustomXcm(
+        {
+          ...edContext,
+          options: {
+            ...edContext.options,
+            overriddenAsset: [
+              { id: usdtLocation, fun: { Fungible: 5000n } },
+              { id: pinkLocation, fun: { Fungible: 1000n }, isFeeAsset: true }
+            ]
+          }
+        },
+        2,
+        false,
+        0n,
+        fees
+      )
+
+      expect(result).toEqual([createExchange(pinkLocation, false), createDeposit(3)])
+    })
   })
 
   describe('refund instruction address resolution', () => {

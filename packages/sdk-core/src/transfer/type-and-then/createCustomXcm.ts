@@ -144,16 +144,16 @@ export const createCustomXcm = async <TApi, TRes, TSigner, TCustomChain extends 
     )
   }
 
-  const isFeeTransferred = deepEqual(feeLocLocalized, depositLocLocalized)
+  const depositsFeeAsset =
+    overriddenAsset !== undefined &&
+    (isForFeeCalc || isExternalChain(dest.chain) || isFeeLeftoverAboveEd())
+
+  const isFeeTransferred = deepEqual(feeLocLocalized, depositLocLocalized) || depositsFeeAsset
 
   const resolveDepositAssets = () => {
     if (edDeposit !== undefined) {
       return { Wild: { AllCounted: isFeeTransferred ? assetCount + 1 : assetCount } }
     }
-
-    const depositsFeeAsset =
-      overriddenAsset !== undefined &&
-      (isForFeeCalc || isExternalChain(dest.chain) || isFeeLeftoverAboveEd())
 
     return assetCount > 1 && !depositsFeeAsset
       ? createAllOf(depositLocLocalized)
